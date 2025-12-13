@@ -39,6 +39,7 @@ const characters = {
   if ($('profile side ul li[data-universe="'+univClean+'"]').length) {
     let count = $('profile side ul li[data-universe="'+univClean+'"]').data('count');
     let newCount = count++;
+    console.log(count+'/'+newCount);
     $('profile side ul li[data-universe="'+univClean+'"]').attr('data-count', newCount);
   } else {
     $('profile side ul').append('<li data-universe="'+univClean+'" data-count="1">'+univ+'</li>');
