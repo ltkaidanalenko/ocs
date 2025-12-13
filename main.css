@@ -169,7 +169,7 @@ profile {
     & oc {
       width:clamp(10rem, 16%, 20rem);
       background:var(--bckg3);
-      aspect-ratio:3/4;
+      aspect-ratio:3/4.5;
       display:flex;
       justify-content:center;
       align-items:center;
