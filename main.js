@@ -12,16 +12,40 @@ const characters = {
    name: 'John Doe',
    universe: 'Cyberpunk 2077',
    image:'https://placehold.co/150x200/222/eee.png',
+   header:'https://placehold.co/1000x500/222/eee.png',
+   icon1:'https://placehold.co/100/222/eee.png',
+   icon2:'https://placehold.co/100/222/eee.png',
+   side:'https://placehold.co/100/222/eee.png',
+   info:'Lorem ipsum dolor sit amet.',
+   history:'Lorem ipsum dolor sit amet.',
+   misc:'Lorem ipsum dolor sit amet.',
+   extra:'Lorem ipsum dolor sit amet.'
   },
   james_doe: {
    name: 'James Doe',
    universe: 'Cyberpunk 2077',
    image:'https://placehold.co/150x200/222/eee.png',
+   header:'https://placehold.co/1000x500/222/eee.png',
+   icon1:'https://placehold.co/100/222/eee.png',
+   icon2:'https://placehold.co/100/222/eee.png',
+   side:'https://placehold.co/100/222/eee.png',
+   info:'Lorem ipsum dolor sit amet.',
+   history:'Lorem ipsum dolor sit amet.',
+   misc:'Lorem ipsum dolor sit amet.',
+   extra:'Lorem ipsum dolor sit amet.'
   },
   jane_smith: {
    name: 'Jane Smith',
    universe: 'Baldur\'s Gate 3',
    image:'https://placehold.co/150x200/222/eee.png',
+   header:'https://placehold.co/1000x500/222/eee.png',
+   icon1:'https://placehold.co/100/222/eee.png',
+   icon2:'https://placehold.co/100/222/eee.png',
+   side:'https://placehold.co/100/222/eee.png',
+   info:'Lorem ipsum dolor sit amet.',
+   history:'Lorem ipsum dolor sit amet.',
+   misc:'Lorem ipsum dolor sit amet.',
+   extra:'Lorem ipsum dolor sit amet.'
   },
  };
 
@@ -44,5 +68,29 @@ const characters = {
   }
  }
 
+ for (const oc in characters) {
+  const data = characters[oc];
+
+  const $char = $('#character-template')
+    .clone()
+    .removeAttr('id')
+    .attr('data-character', oc)
+    .show();
+
+  $char.find('header').append(`<img src="${data.header}"><h2>${data.name}</h2><h3>${data.universe}</h3>`);
+  $char.find('info').html(data.info);
+  $char.find('history').html(data.history);
+  $char.find('miscellaneous').html(data.misc);
+  $char.find('extra').html(data.extra);
+
+  $char.find('icons').append(`
+    <span><img src="${data.icon1}"></span>
+    <span><img src="${data.icon2}"></span>
+  `);
+
+  $char.find('side').append(`<img src="${data.side}">`);
+
+  $('body').append($char);
+}
  
 });
