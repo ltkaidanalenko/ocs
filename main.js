@@ -8,14 +8,14 @@ $(function(){
  };
 
 const characters = {
- john_doe: {
-  name: 'John Doe',
-  universe: 'Cyberpunk 2077'
- },
- jane_smith: {
-  name: 'Jane Smith',
-  universe: 'Baldur\'s Gate 3'
- },
-};
+  john_doe: {
+   name: 'John Doe',
+   universe: 'Cyberpunk 2077'
+  },
+  jane_smith: {
+   name: 'Jane Smith',
+   universe: 'Baldur\'s Gate 3'
+  },
+ };
 
 });
