@@ -11,6 +11,7 @@ const characters = {
   john_doe: {
    name: 'John Doe',
    universe: 'Cyberpunk 2077',
+   tags: ['man', 'alive', 'white', 'cis', 'bisexual'],
    image:'https://placehold.co/150x200/222/eee.png',
    header:'https://placehold.co/1000x500/222/eee.png',
    icon1:'https://placehold.co/100/222/eee.png',
@@ -24,6 +25,7 @@ const characters = {
   james_doe: {
    name: 'James Doe',
    universe: 'Cyberpunk 2077',
+   tags: ['man', 'dead', 'black', 'trans', 'straight'],
    image:'https://placehold.co/150x200/222/eee.png',
    header:'https://placehold.co/1000x500/222/eee.png',
    icon1:'https://placehold.co/100/222/eee.png',
@@ -37,6 +39,7 @@ const characters = {
   jane_smith: {
    name: 'Jane Smith',
    universe: 'Baldur\'s Gate 3',
+   tags: ['woman', 'alive', 'tiefling', 'cis', 'lesbian'],
    image:'https://placehold.co/150x200/222/eee.png',
    header:'https://placehold.co/1000x500/222/eee.png',
    icon1:'https://placehold.co/100/222/eee.png',
@@ -53,7 +56,7 @@ const characters = {
  $('profile side').append('<img src="'+info.icon+'"/><h1>'+info.title+'</h1><p>'+info.text+'</p><ul></ul>');
 
  for (const oc in characters) {
-   $('profile main').append(`<oc id="${oc}"><img src="${characters[oc].image}"/><h2>${characters[oc].name}</h2><h3>${characters[oc].universe}</h3></oc>`);
+   $('profile main').append(`<oc id="${oc}"><tags></tags><span><img src="${characters[oc].image}"/></span><h2>${characters[oc].name}</h2><h3>${characters[oc].universe}</h3></oc>`);
  }
 
  for (const oc in characters) {
@@ -71,13 +74,17 @@ const characters = {
  for (const oc in characters) {
   const data = characters[oc];
 
+  const tags = Array.isArray(data.tags)
+    ? data.tags
+    : data.tags.split(',').map(t => t.trim());
+
   const $char = $('#character-template')
     .clone()
     .removeAttr('id')
     .attr('data-character', oc)
     .show();
 
-  $char.find('header').append(`<img src="${data.header}"><h2>${data.name}</h2><h3>${data.universe}</h3>`);
+  $char.find('header').append(`<tags></tags><img src="${data.header}"><h2>${data.name}</h2><h3>${data.universe}</h3>`);
   $char.find('info').html(data.info);
   $char.find('history').html(data.history);
   $char.find('miscellaneous').html(data.misc);
@@ -89,8 +96,34 @@ const characters = {
   `);
 
   $char.find('side').append(`<img src="${data.side}">`);
+  
+  const $tags = $char.find('tags');
+
+  tags.forEach(tag => {
+    $tags.append(`<b data-tag="${tag}">${tag}</b>`);
+  });
 
   $('body').append($char);
+
+  const $oc = $(`oc#${oc}`);
+  tags.forEach(tag => {
+    $oc.find('tags').append(`<b data-tag="${tag}">${tag}</b>`);
+  });
+  
 }
+
+ const allTags = new Set();
+
+ for (const oc in characters) {
+   const tags = Array.isArray(characters[oc].tags)
+     ? characters[oc].tags
+     : characters[oc].tags.split(',').map(t => t.trim());
+ 
+   tags.forEach(tag => allTags.add(tag));
+ }
+
+ allTags.forEach(tag => {
+  $('tabs').append(`<b data-tag="${tag}">${tag}</b>`);
+ });
  
 });
