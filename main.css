@@ -178,6 +178,7 @@ profile {
       outline:1px solid transparent;
       outline-offset:-1px;
       transition:outline ease .5s;
+      align-self: stretch;
       & * {
        --ac1:inherit;
        --ac2:inherit;
@@ -189,6 +190,8 @@ profile {
         outline-offset:-1px;
         isolation:isolate;
         transition:outline ease .5s;
+        flex-grow:1;
+        position:relative;
         & img {
           object-fit:cover;
           object-position:center;
@@ -197,6 +200,8 @@ profile {
           filter:brightness(.80);
           transition:filter ease 1s;
           z-index:-1;
+          position:absolute;
+          inset:0;
         }
       }
       & > tags {
