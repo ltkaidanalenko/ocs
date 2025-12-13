@@ -243,7 +243,6 @@ profile {
         margin:0;
         text-transform:uppercase;
         font:700 .65rem var(--ffm);
-        flex-grow:1;
         line-height:1;
         margin-top:.5em;
         color:var(--ac2);
@@ -374,7 +373,6 @@ character {
       margin:0;
       text-transform:uppercase;
       font:700 .75rem var(--ffm);
-      flex-grow:1;
       line-height:1;
       margin-top:.5em;
       color:var(--ac2);
