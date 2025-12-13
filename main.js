@@ -232,5 +232,11 @@ $('character[data-character="'+character+'"]').addClass('active');
 $('character close').on('click', function() {
 $(this).parent('character').removeClass('active');
 });
- 
+
+var pageLink = location.href;
+var question = pageLink.substring(pageLink.indexOf("?")+1);
+if ($('character[data-character="'+question+'"]').length) {
+$('character[data-character="'+question+'"]').addClass('active');
+}
+
 });
