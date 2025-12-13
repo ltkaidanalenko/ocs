@@ -112,6 +112,9 @@ profile {
         color:color-mix(in srgb, var(--txt) 75%, var(--bckg2));
         cursor:pointer;
         transition:color ease .3s;
+        &::after {
+         content:'('attr(data-counter)')';
+        }
         &::marker {
           color:var(--ac2);
           transition:color ease .3s;
