@@ -35,11 +35,9 @@ const characters = {
  for (const oc in characters) {
   let univ = `${characters[oc].universe}`;
   let univClean = univ.toLowerCase().split(' ').join('').replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
-  console.log(univClean);
   if ($('profile side ul li[data-universe="'+univClean+'"]').length) {
     let count = $('profile side ul li[data-universe="'+univClean+'"]').data('count');
-    let newCount = count++;
-    console.log(count+'/'+newCount);
+    let newCount = ++count;
     $('profile side ul li[data-universe="'+univClean+'"]').attr('data-count', newCount);
   } else {
     $('profile side ul').append('<li data-universe="'+univClean+'" data-count="1">'+univ+'</li>');
