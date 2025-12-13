@@ -92,8 +92,7 @@ const characters = {
   const $char = $('#character-template')
     .clone()
     .removeAttr('id')
-    .attr('data-character', oc)
-    .show();
+    .attr('data-character', oc);
 
   $char.find('header').append(`<tags></tags><img src="${data.header}"><h2>${data.name}</h2><h3>${data.universe}</h3>`);
   $char.find('info').html(data.info);
