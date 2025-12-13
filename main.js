@@ -68,7 +68,7 @@ const characters = {
  for (const oc in characters) {
   let univ = `${characters[oc].universe}`;
   let univClean = univ.toLowerCase().split(' ').join('').replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
-   $('profile main').append(`<oc id="${oc}" data-universe="${univClean}"><tags></tags><span><img src="${characters[oc].image}"/></span><h2>${characters[oc].name}</h2><h3>${characters[oc].universe}</h3></oc>`);
+   $('profile main').append(`<oc id="${oc}" data-universe="${univClean}" style="--ac1:${characters[oc].ac1};--ac2:${characters[oc].ac2};"><tags></tags><span><img src="${characters[oc].image}"/></span><h2>${characters[oc].name}</h2><h3>${characters[oc].universe}</h3></oc>`);
  }
 
  // creating universe filters
@@ -98,7 +98,9 @@ const characters = {
   const $char = $('#character-template')
     .clone()
     .removeAttr('id')
-    .attr('data-character', oc);
+    .attr('data-character', oc)
+    .show()
+    .attr('style',  `--ac1:${characters[oc].ac1};--ac2:${characters[oc].ac2};`);
 
   $char.find('header').append(`<tags></tags><img src="${data.header}"><h2>${data.name}</h2><h3>${data.universe}</h3>`);
   $char.find('info').html(data.info);
