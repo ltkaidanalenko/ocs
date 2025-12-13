@@ -77,6 +77,7 @@ const characters = {
   const tags = Array.isArray(data.tags)
     ? data.tags
     : data.tags.split(',').map(t => t.trim());
+  tags.sort((a, b) => a.localeCompare(b));
 
   const $char = $('#character-template')
     .clone()
@@ -122,8 +123,10 @@ const characters = {
    tags.forEach(tag => allTags.add(tag));
  }
 
- allTags.forEach(tag => {
-  $('tabs').append(`<b data-tag="${tag}">${tag}</b>`);
- });
+ [...allTags]
+  .sort((a, b) => a.localeCompare(b))
+  .forEach(tag => {
+    $('tabs').append(`<b data-tag="${tag}">${tag}</b>`);
+  });
  
 });
