@@ -52,12 +52,18 @@ const characters = {
   },
  };
 
+ // populating main profile
+
  $('profile header').append('<img src="'+info.header+'"/>');
  $('profile side').append('<img src="'+info.icon+'"/><h1>'+info.title+'</h1><p>'+info.text+'</p><ul></ul>');
+
+ // creating character list
 
  for (const oc in characters) {
    $('profile main').append(`<oc id="${oc}"><tags></tags><span><img src="${characters[oc].image}"/></span><h2>${characters[oc].name}</h2><h3>${characters[oc].universe}</h3></oc>`);
  }
+
+ // creating universe filters
 
  for (const oc in characters) {
   let univ = `${characters[oc].universe}`;
@@ -70,6 +76,8 @@ const characters = {
     $('profile side ul').append('<li data-universe="'+univClean+'" data-count="1">'+univ+'</li>');
   }
  }
+
+ // creating character profiles
 
  for (const oc in characters) {
   const data = characters[oc];
@@ -113,6 +121,8 @@ const characters = {
   
 }
 
+ // creating filter buttons
+
  const allTags = new Set();
 
  for (const oc in characters) {
@@ -128,5 +138,40 @@ const characters = {
   .forEach(tag => {
     $('tabs').append(`<b data-tag="${tag}">${tag}</b>`);
   });
+
+// filtering system
+ 
+const activeTags = new Set();
+
+$('tabs').on('click', 'b[data-tag]', function () {
+  const tag = $(this).data('tag');
+
+  $(this).toggleClass('active');
+
+  if (activeTags.has(tag)) {
+    activeTags.delete(tag);
+  } else {
+    activeTags.add(tag);
+  }
+
+  filterOCs();
+});
+
+function filterOCs() {
+  const requiredTags = [...activeTags];
+
+  $('profile main oc').each(function () {
+    const ocTags = $(this)
+      .find('tags b')
+      .map((_, el) => $(el).data('tag'))
+      .get();
+
+    const hasAllTags = requiredTags.every(tag =>
+      ocTags.includes(tag)
+    );
+
+    $(this).toggle(hasAllTags || requiredTags.length === 0);
+  });
+}
  
 });
