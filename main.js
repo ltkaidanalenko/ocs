@@ -18,4 +18,7 @@ const characters = {
   },
  };
 
+ console.log(info);
+ console.log(characters);
+
 });
