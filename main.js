@@ -158,6 +158,7 @@ let activeUniverse = null;
     $(this).addClass('active');
   }
 
+  filterGlobalTags();
   filterOCs();
 });
 
@@ -198,24 +199,26 @@ function filterOCs() {
     $oc.toggle(visible);
   });
 
-  filterGlobalTags();
 }
 
  // hide unused filters
 
- function filterGlobalTags() {
-  const visibleOCs = $('profile main oc:visible');
+function filterGlobalTags() {
+  const relevantOCs = activeUniverse
+    ? $(`profile main oc[data-universe="${activeUniverse}"]`)
+    : $('profile main oc');
 
   $('tabs b[data-tag]').each(function () {
     const tag = $(this).data('tag');
 
-    const tagExists = visibleOCs.toArray().some(oc =>
+    const tagExistsInUniverse = relevantOCs.toArray().some(oc =>
       $(oc).find(`tags b[data-tag="${tag}"]`).length
     );
 
-    $(this).toggle(tagExists);
+    $(this).toggle(tagExistsInUniverse);
 
-    if (!tagExists) {
+    // If the tag no longer exists in this universe, deactivate it
+    if (!tagExistsInUniverse) {
       $(this).removeClass('active');
       activeTags.delete(tag);
     }
