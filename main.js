@@ -1,9 +1,11 @@
-const info = {
-title:'how rare and beautiful it truly is that we exist',
-text:'Lorem ipsum dolor sit amet.'
-header:'https://placehold.co/1920x300/222/eee.png',
-icon:'https://placehold.co/100/222/eee.png'
-};
+$(function(){
+
+ const info = {
+  title:'how rare and beautiful it truly is that we exist',
+  text:'Lorem ipsum dolor sit amet.',
+  header:'https://placehold.co/1920x300/222/eee.png',
+  icon:'https://placehold.co/100/222/eee.png'
+ };
 
 const characters = {
  john_doe: {
@@ -15,3 +17,5 @@ const characters = {
   universe: 'Baldur\'s Gate 3'
  },
 };
+
+});
