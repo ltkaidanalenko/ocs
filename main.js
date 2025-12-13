@@ -60,7 +60,9 @@ const characters = {
  // creating character list
 
  for (const oc in characters) {
-   $('profile main').append(`<oc id="${oc}"><tags></tags><span><img src="${characters[oc].image}"/></span><h2>${characters[oc].name}</h2><h3>${characters[oc].universe}</h3></oc>`);
+  let univ = `${characters[oc].universe}`;
+  let univClean = univ.toLowerCase().split(' ').join('').replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
+   $('profile main').append(`<oc id="${oc}" data-universe="${univClean}"><tags></tags><span><img src="${characters[oc].image}"/></span><h2>${characters[oc].name}</h2><h3>${characters[oc].universe}</h3></oc>`);
  }
 
  // creating universe filters
@@ -142,6 +144,22 @@ const characters = {
 // filtering system
  
 const activeTags = new Set();
+let activeUniverse = null;
+
+ $('profile side').on('click', 'li[data-universe]', function () {
+  const universe = $(this).data('universe');
+
+  if (activeUniverse === universe) {
+    activeUniverse = null;
+    $(this).removeClass('active');
+  } else {
+    activeUniverse = universe;
+    $('profile side li').removeClass('active');
+    $(this).addClass('active');
+  }
+
+  filterOCs();
+});
 
 $('tabs').on('click', 'b[data-tag]', function () {
   const tag = $(this).data('tag');
@@ -161,16 +179,46 @@ function filterOCs() {
   const requiredTags = [...activeTags];
 
   $('profile main oc').each(function () {
-    const ocTags = $(this)
-      .find('tags b')
+    const $oc = $(this);
+
+    const ocUniverse = $oc.data('universe');
+
+    const ocTags = $oc.find('tags b')
       .map((_, el) => $(el).data('tag'))
       .get();
 
-    const hasAllTags = requiredTags.every(tag =>
-      ocTags.includes(tag)
+    const matchesUniverse =
+      !activeUniverse || ocUniverse === activeUniverse;
+
+    const matchesTags =
+      requiredTags.every(tag => ocTags.includes(tag));
+
+    const visible = matchesUniverse && matchesTags;
+
+    $oc.toggle(visible);
+  });
+
+  filterGlobalTags();
+}
+
+ // hide unused filters
+
+ function filterGlobalTags() {
+  const visibleOCs = $('profile main oc:visible');
+
+  $('tabs b[data-tag]').each(function () {
+    const tag = $(this).data('tag');
+
+    const tagExists = visibleOCs.toArray().some(oc =>
+      $(oc).find(`tags b[data-tag="${tag}"]`).length
     );
 
-    $(this).toggle(hasAllTags || requiredTags.length === 0);
+    $(this).toggle(tagExists);
+
+    if (!tagExists) {
+      $(this).removeClass('active');
+      activeTags.delete(tag);
+    }
   });
 }
  
