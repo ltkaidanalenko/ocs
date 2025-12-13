@@ -13,6 +13,11 @@ const characters = {
    universe: 'Cyberpunk 2077',
    image:'https://placehold.co/150x200/222/eee.png',
   },
+  james_doe: {
+   name: 'James Doe',
+   universe: 'Cyberpunk 2077',
+   image:'https://placehold.co/150x200/222/eee.png',
+  },
   jane_smith: {
    name: 'Jane Smith',
    universe: 'Baldur\'s Gate 3',
@@ -26,5 +31,19 @@ const characters = {
  for (const oc in characters) {
    $('profile main').append(`<oc id="${oc}"><img src="${characters[oc].image}"/><h2>${characters[oc].name}</h2><h3>${characters[oc].universe}</h3></oc>`);
  }
+
+ for (const oc in characters) {
+  let univ = `${characters[oc].universe}`;
+  let univClean = univ.toLowerCase().split(' ').join('').replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
+  console.log(univClean);
+  if ($('profile side ul li[data-universe="'+univClean+'"]').length) {
+    let count = $('profile side ul li[data-universe="'+univClean+'"]').data('count');
+    let newCount = count++;
+    $('profile side ul li[data-universe="'+univClean+'"]').attr('data-count', newCount);
+  } else {
+    $('profile side ul').append('<li data-universe="'+univClean+'" data-count="1">'+univ+'</li>');
+  }
+ }
+
  
 });
