@@ -18,7 +18,7 @@ const characters = {
   },
  };
 
- console.log(info);
- console.log(characters);
-
+ $('profile header').append('<img src="'+info.header+'"/>');
+ $('profile side').append('<img src="'+info.icon+'"/><h1>'+info.title+'</h1><p>'+info.text+'</p><ul></ul>');
+ 
 });
