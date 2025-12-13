@@ -8,7 +8,7 @@ $(function(){
  };
 
 const characters = {
-  james_doe: {
+  vesna_ndari: {
    name: 'Vesna Ndari',
    universe: 'Cyberpunk 2077',
    tags: ['woman', 'alive', 'asian', 'cis', 'bisexual', 'streetkid', 'brawler'],
