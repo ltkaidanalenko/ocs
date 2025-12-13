@@ -3,38 +3,22 @@ $(function(){
  const info = {
   title:'how rare and beautiful it truly is that we exist',
   text:'Lorem ipsum dolor sit amet.',
-  header:'https://placehold.co/1920x300/222/eee.png',
-  icon:'https://placehold.co/100/222/eee.png'
+  header:'/ocs/images/profile-header.png',
+  icon:'/ocs/images/profile-icon.png'
  };
 
 const characters = {
-  john_doe: {
-   name: 'John Doe',
-   universe: 'Cyberpunk 2077',
-   tags: ['man', 'alive', 'white', 'cis', 'bisexual'],
-   ac1: '#8f4242',
-   ac2: '#752f2f',
-   image:'https://placehold.co/150x200/222/eee.png',
-   header:'https://placehold.co/1000x500/222/eee.png',
-   icon1:'https://placehold.co/100/222/eee.png',
-   icon2:'https://placehold.co/100/222/eee.png',
-   side:'https://placehold.co/100/222/eee.png',
-   info:'Lorem ipsum dolor sit amet.',
-   history:'Lorem ipsum dolor sit amet.',
-   misc:'Lorem ipsum dolor sit amet.',
-   extra:'Lorem ipsum dolor sit amet.'
-  },
   james_doe: {
-   name: 'James Doe',
+   name: 'Vesna Ndari',
    universe: 'Cyberpunk 2077',
-   tags: ['man', 'dead', 'black', 'trans', 'straight'],
+   tags: ['woman', 'alive', 'asian', 'cis', 'bisexual', 'streetkid', 'brawler'],
    ac1: '#507d4f',
    ac2: '#3a6139',
-   image:'https://placehold.co/150x200/222/eee.png',
-   header:'https://placehold.co/1000x500/222/eee.png',
-   icon1:'https://placehold.co/100/222/eee.png',
-   icon2:'https://placehold.co/100/222/eee.png',
-   side:'https://placehold.co/100/222/eee.png',
+   image:'/ocs/images/vesna-image.png',
+   header:'/ocs/images/vesna-header.png',
+   icon1:'/ocs/images/vesna-icon1.png',
+   icon2:'/ocs/images/vesna-icon2.png',
+   side:'/ocs/images/vesna-side.png',
    info:'Lorem ipsum dolor sit amet.',
    history:'Lorem ipsum dolor sit amet.',
    misc:'Lorem ipsum dolor sit amet.',
