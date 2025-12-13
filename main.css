@@ -113,7 +113,7 @@ profile {
         cursor:pointer;
         transition:color ease .3s;
         &::after {
-         content:'('attr(data-counter)')';
+         content:' ('attr(data-count)')';
         }
         &::marker {
           color:var(--ac2);
