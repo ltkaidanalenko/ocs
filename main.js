@@ -223,5 +223,14 @@ function filterGlobalTags() {
     }
   });
 }
+
+$('oc').on('click', function() {
+var character = $(this).attr('id');
+$('character[data-character="'+character+'"]').addClass('active');
+});
+
+$('character close').on('click', function() {
+$(this).parent('character').removeClass('active');
+});
  
 });
