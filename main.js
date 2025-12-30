@@ -25,7 +25,7 @@ const characters = {
    extra:'Lorem ipsum dolor sit amet.'
   },
   vee_lancaster: {
-   name: 'Vee Lancaster',
+   name: 'Vee <strike>(Victoria)</strike> Lancaster',
    universe: 'Cyberpunk 2077',
    tags: ['woman', 'alive', 'white', 'usamerican', 'cis', 'bisexual', 'corpo', 'netrunner'],
    ac1: '#4f6c7d',
