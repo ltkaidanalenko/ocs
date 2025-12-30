@@ -24,6 +24,22 @@ const characters = {
    misc:'Lorem ipsum dolor sit amet.',
    extra:'Lorem ipsum dolor sit amet.'
   },
+  vee_lancaster: {
+   name: 'Vee Lancaster',
+   universe: 'Cyberpunk 2077',
+   tags: ['woman', 'alive', 'white', 'cis', 'bisexual', 'corpo', 'netrunner'],
+   ac1: '#4f6c7d',
+   ac2: '#395260',
+   image:'/ocs/images/vee-image.png',
+   header:'/ocs/images/vee-header.png',
+   icon1:'/ocs/images/vee-icon1.png',
+   icon2:'/ocs/images/vee-icon2.png',
+   side:'/ocs/images/vee-side.png',
+   info:'Lorem ipsum dolor sit amet.',
+   history:'Lorem ipsum dolor sit amet.',
+   misc:'Lorem ipsum dolor sit amet.',
+   extra:'Lorem ipsum dolor sit amet.'
+  },
   jane_smith: {
    name: 'Jane Smith',
    universe: 'Baldur\'s Gate 3',
