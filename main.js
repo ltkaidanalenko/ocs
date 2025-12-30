@@ -33,7 +33,7 @@ const characters = {
    image:'/ocs/images/vee-image.png',
    header:'/ocs/images/vee-header.png',
    icon1:'/ocs/images/vee-icon1.png',
-   icon2:'/ocs/images/vee-icon2.png',
+   icon2:'/ocs/images/vee-icon3.png',
    side:'/ocs/images/vee-side.png',
    info:'Lorem ipsum dolor sit amet.',
    history:'Lorem ipsum dolor sit amet.',
