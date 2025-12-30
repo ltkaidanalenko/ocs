@@ -175,6 +175,7 @@ profile {
       align-items:center;
       flex-direction:column;
       position:relative;
+      text-align:center;
       padding:2rem;
       box-sizing:border-box;
       cursor:pointer;
