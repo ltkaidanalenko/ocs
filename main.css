@@ -239,6 +239,7 @@ profile {
         line-height:1;
         transition:color ease .3s;
         letter-spacing:.01em;
+        & strike { display:none; }
       }
       & > h3 {
         margin:0;
